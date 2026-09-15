@@ -35,7 +35,7 @@ func TestClickhouse_Initialize(t *testing.T) {
 	db := newTestDB(testAdminUser, testAdminPassword)
 
 	req := dbplugin.InitializeRequest{
-		Config: map[string]interface{}{
+		Config: map[string]any{
 			"connection_url": connURL,
 		},
 		VerifyConnection: true,
@@ -63,7 +63,7 @@ func TestClickhouse_Initialize_WithHostPort(t *testing.T) {
 	db := newTestDB(testAdminUser, testAdminPassword)
 
 	req := dbplugin.InitializeRequest{
-		Config: map[string]interface{}{
+		Config: map[string]any{
 			"host":     parsed.Hostname(),
 			"port":     port,
 			"username": testAdminUser,
@@ -83,7 +83,7 @@ func TestClickhouse_NewUser(t *testing.T) {
 	db := newTestDB(testAdminUser, testAdminPassword)
 
 	req := dbplugin.InitializeRequest{
-		Config: map[string]interface{}{
+		Config: map[string]any{
 			"connection_url": connURL,
 		},
 		VerifyConnection: true,
@@ -133,7 +133,7 @@ func TestClickhouse_DeleteUser(t *testing.T) {
 	db := newTestDB(testAdminUser, testAdminPassword)
 
 	req := dbplugin.InitializeRequest{
-		Config: map[string]interface{}{
+		Config: map[string]any{
 			"connection_url": connURL,
 		},
 		VerifyConnection: true,
@@ -191,7 +191,7 @@ func TestClickhouse_UpdateUser(t *testing.T) {
 	db := newTestDB(testAdminUser, testAdminPassword)
 
 	req := dbplugin.InitializeRequest{
-		Config: map[string]interface{}{
+		Config: map[string]any{
 			"connection_url": connURL,
 		},
 		VerifyConnection: true,
@@ -254,7 +254,7 @@ func TestClickhouse_UpdateUser_NoChanges(t *testing.T) {
 	db := newTestDB(testAdminUser, testAdminPassword)
 
 	req := dbplugin.InitializeRequest{
-		Config: map[string]interface{}{
+		Config: map[string]any{
 			"connection_url": connURL,
 		},
 		VerifyConnection: true,
@@ -294,7 +294,7 @@ func TestClickhouse_NewUser_WithRoleAssignment(t *testing.T) {
 	db := newTestDB(testAdminUser, testAdminPassword)
 
 	req := dbplugin.InitializeRequest{
-		Config: map[string]interface{}{
+		Config: map[string]any{
 			"connection_url": connURL,
 		},
 		VerifyConnection: true,
@@ -343,7 +343,7 @@ func TestClickhouse_UpdateUser_WithExpiration(t *testing.T) {
 	db := newTestDB(testAdminUser, testAdminPassword)
 
 	req := dbplugin.InitializeRequest{
-		Config: map[string]interface{}{
+		Config: map[string]any{
 			"connection_url": connURL,
 		},
 		VerifyConnection: true,
@@ -401,7 +401,7 @@ func TestClickhouse_UpdateUser_ExpirationNoStatements(t *testing.T) {
 	db := newTestDB(testAdminUser, testAdminPassword)
 
 	req := dbplugin.InitializeRequest{
-		Config: map[string]interface{}{
+		Config: map[string]any{
 			"connection_url": connURL,
 		},
 		VerifyConnection: true,
@@ -465,7 +465,7 @@ func TestClickhouse_Close(t *testing.T) {
 	db := newTestDB(testAdminUser, testAdminPassword)
 
 	req := dbplugin.InitializeRequest{
-		Config: map[string]interface{}{
+		Config: map[string]any{
 			"connection_url": connURL,
 		},
 		VerifyConnection: true,
@@ -490,7 +490,7 @@ func TestClickhouse_NewUser_MultipleStatements(t *testing.T) {
 	db := newTestDB(testAdminUser, testAdminPassword)
 
 	req := dbplugin.InitializeRequest{
-		Config: map[string]interface{}{
+		Config: map[string]any{
 			"connection_url": connURL,
 		},
 		VerifyConnection: true,

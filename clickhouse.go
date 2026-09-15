@@ -49,8 +49,8 @@ type Clickhouse struct {
 }
 
 // New returns a new Clickhouse instance with the provided username template and version.
-func New(usernameTemplate, version string) func() (interface{}, error) {
-	return func() (interface{}, error) {
+func New(usernameTemplate, version string) func() (any, error) {
+	return func() (any, error) {
 		if usernameTemplate == "" {
 			usernameTemplate = defaultUserNameTemplate
 		}
@@ -83,8 +83,8 @@ func (c *Clickhouse) Type() (string, error) {
 }
 
 // Metadata returns the plugin metadata.
-func (c *Clickhouse) Metadata() (map[string]interface{}, error) {
-	return map[string]interface{}{
+func (c *Clickhouse) Metadata() (map[string]any, error) {
+	return map[string]any{
 		"version": c.version,
 		"type":    clickhouseTypeName,
 	}, nil

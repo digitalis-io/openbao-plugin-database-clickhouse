@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   and all Go module dependencies updated to their latest releases, including
   `github.com/ClickHouse/clickhouse-go/v2` v2.48.0 and
   `github.com/openbao/openbao/sdk/v2` v2.6.2.
+- Source modernised with `go fix`: `interface{}` replaced by `any`. No
+  behaviour change.
 
 ### Fixed
 
