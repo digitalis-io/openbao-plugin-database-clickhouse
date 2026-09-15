@@ -15,13 +15,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   OpenBao base version and the plugin version.
 - `golangci-lint` is pinned to v2.13.1 in CI so a new linter release cannot
   fail a branch that changed nothing.
-- Go toolchain bumped to 1.26.6 (`go.mod`, CI workflows and the container build)
+- Go toolchain bumped to 1.27.0 (`go.mod`, CI workflows and the container build)
   and all Go module dependencies updated to their latest releases, including
   `github.com/ClickHouse/clickhouse-go/v2` v2.48.0 and
   `github.com/openbao/openbao/sdk/v2` v2.6.2.
 
 ### Fixed
 
+- `google.golang.org/grpc` updated to v1.83.2 to pick up the fix for
+  CVE-2026-84445, a denial of service in gRPC-Go xDS servers where a request
+  missing both the `:authority` and `Host` headers caused an out-of-bounds
+  panic. The plugin does not run an xDS server, so it was not exploitable here,
+  but the vulnerable version was still present in the dependency tree.
+  `golang.org/x/crypto` (v0.57.0), `golang.org/x/net` (v0.59.0),
+  `golang.org/x/sys` (v0.48.0) and `golang.org/x/text` (v0.42.0) were updated in
+  the same pass.
 - `testhelpers`: `BuildConnString` built the host with `string(rune(port))`,
   which produced a garbage host instead of `host:port`. It now uses
   `net.JoinHostPort`.
