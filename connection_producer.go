@@ -38,7 +38,7 @@ type clickhouseConnectionProducer struct {
 }
 
 // Init initializes the connection producer with the provided configuration.
-func (c *clickhouseConnectionProducer) Init(ctx context.Context, conf map[string]interface{}, verifyConnection bool) error {
+func (c *clickhouseConnectionProducer) Init(ctx context.Context, conf map[string]any, verifyConnection bool) error {
 	c.Lock()
 	defer c.Unlock()
 
