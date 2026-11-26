@@ -9,7 +9,7 @@
 # applied everywhere.
 
 ARG OPENBAO_VERSION=2.4.4
-ARG GO_VERSION=1.27.0
+ARG GO_VERSION=1.27.4
 
 # ---------------------------------------------------------------------------
 # Build the plugin. Runs on the build platform and cross-compiles to TARGETARCH
