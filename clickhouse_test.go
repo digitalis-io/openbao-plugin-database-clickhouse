@@ -13,7 +13,7 @@ import (
 	"time"
 
 	_ "github.com/ClickHouse/clickhouse-go/v2"
-	clickhousehelper "github.com/elaunira/openbao-plugin-database-clickhouse/testhelpers/clickhouse"
+	clickhousehelper "github.com/digitalis-io/openbao-plugin-database-clickhouse/testhelpers/clickhouse"
 	"github.com/openbao/openbao/sdk/v2/database/dbplugin/v5"
 	"github.com/stretchr/testify/require"
 )

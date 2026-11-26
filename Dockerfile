@@ -9,7 +9,7 @@
 # applied everywhere.
 
 ARG OPENBAO_VERSION=2.4.4
-ARG GO_VERSION=1.27.0
+ARG GO_VERSION=1.27.4
 
 # ---------------------------------------------------------------------------
 # Build the plugin. Runs on the build platform and cross-compiles to TARGETARCH
@@ -47,7 +47,7 @@ FROM openbao/openbao:${OPENBAO_VERSION} AS default
 
 LABEL org.opencontainers.image.title="openbao-clickhouse" \
       org.opencontainers.image.description="OpenBao with the ClickHouse database secrets plugin preinstalled" \
-      org.opencontainers.image.source="https://github.com/elaunira/openbao-plugin-database-clickhouse" \
+      org.opencontainers.image.source="https://github.com/digitalis-io/openbao-plugin-database-clickhouse" \
       org.opencontainers.image.licenses="MPL-2.0"
 
 USER root
@@ -72,7 +72,7 @@ FROM openbao/openbao-ubi:${OPENBAO_VERSION} AS ubi
 
 LABEL org.opencontainers.image.title="openbao-clickhouse" \
       org.opencontainers.image.description="OpenBao with the ClickHouse database secrets plugin preinstalled" \
-      org.opencontainers.image.source="https://github.com/elaunira/openbao-plugin-database-clickhouse" \
+      org.opencontainers.image.source="https://github.com/digitalis-io/openbao-plugin-database-clickhouse" \
       org.opencontainers.image.licenses="MPL-2.0"
 
 USER root

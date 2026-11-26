@@ -1,8 +1,18 @@
+<p align="center">
+  <a href="https://digitalis.io">
+    <img src="https://digitalis-marketplace-assets.s3.us-east-1.amazonaws.com/DigitalisDigital_DigitalisFullLogoGradient+-+medium.png" alt="Digitalis.IO" width="300">
+  </a>
+</p>
+
+<p align="center">
+  <em>Built and maintained by <a href="https://digitalis.io">Digitalis.IO</a></em>
+</p>
+
 # OpenBao Database Plugin for ClickHouse
 
 This plugin provides ClickHouse database connectivity for [OpenBao](https://openbao.org/), enabling dynamic credential management using SQL user management.
 
-> **Note**: This plugin is adapted from [ContentSquare/vault-plugin-database-clickhouse](https://github.com/ContentSquare/vault-plugin-database-clickhouse) for use with OpenBao instead of HashiCorp Vault.
+> **Note**: This project continues [elaunira/openbao-plugin-database-clickhouse](https://github.com/elaunira/openbao-plugin-database-clickhouse), which is no longer maintained. See [Acknowledgments](#acknowledgments).
 
 ## Features
 
@@ -15,9 +25,9 @@ This plugin provides ClickHouse database connectivity for [OpenBao](https://open
 
 ## Prerequisites
 
-- OpenBao 2.4.4 or later (uses SDK v2.6.2)
+- OpenBao 2.4.4 or later (uses SDK v2.7.1)
 - ClickHouse 21.8 or later with SQL user management enabled (tested with v25.12)
-- Go 1.26+ (for building from source)
+- Go 1.27+ (for building from source)
 
 ### ClickHouse Requirements
 
@@ -30,7 +40,7 @@ ClickHouse must be configured to use SQL-based user management instead of the de
 
 ```bash
 # Clone the repository
-git clone https://github.com/elaunira/openbao-plugin-database-clickhouse.git
+git clone https://github.com/digitalis-io/openbao-plugin-database-clickhouse.git
 cd openbao-plugin-database-clickhouse
 
 # Build the plugin
@@ -103,10 +113,10 @@ Container Registry on every `v*` tag by the `Docker` workflow
 
 ```bash
 # Alpine flavour (default)
-docker pull ghcr.io/elaunira/openbao-plugin-database-clickhouse:latest
+docker pull ghcr.io/digitalis-io/openbao-plugin-database-clickhouse:latest
 
 # UBI flavour
-docker pull ghcr.io/elaunira/openbao-plugin-database-clickhouse:latest-ubi
+docker pull ghcr.io/digitalis-io/openbao-plugin-database-clickhouse:latest-ubi
 ```
 
 ### Tags
@@ -142,7 +152,7 @@ The default command starts a dev-mode server with the plugin directory already
 registered:
 
 ```bash
-docker run --rm -p 8200:8200 ghcr.io/elaunira/openbao-plugin-database-clickhouse:latest
+docker run --rm -p 8200:8200 ghcr.io/digitalis-io/openbao-plugin-database-clickhouse:latest
 
 export BAO_ADDR=http://127.0.0.1:8200
 export BAO_TOKEN=root
@@ -173,7 +183,7 @@ docker run -d --name openbao \
   -p 8200:8200 \
   -v "$PWD/config:/openbao/config" \
   -v openbao-data:/openbao/file \
-  ghcr.io/elaunira/openbao-plugin-database-clickhouse:latest \
+  ghcr.io/digitalis-io/openbao-plugin-database-clickhouse:latest \
   server -config=/openbao/config/bao.hcl
 ```
 
@@ -226,7 +236,7 @@ make docker-build OPENBAO_VERSION=2.4.4 PLUGIN_VERSION=1.0.0 IMAGE_TAG=1.0.0
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
-| `IMAGE` | `ghcr.io/elaunira/openbao-plugin-database-clickhouse` | Image name |
+| `IMAGE` | `ghcr.io/digitalis-io/openbao-plugin-database-clickhouse` | Image name |
 | `IMAGE_TAG` | `local` | Image tag (`-ubi` appended for the UBI flavour) |
 | `OPENBAO_VERSION` | `2.4.4` | OpenBao base image version |
 | `PLUGIN_VERSION` | `v0.0.0-dev` | Version the plugin self-reports |
@@ -491,14 +501,26 @@ For self-signed certificates, use `skip_verify=true` in the connection URL:
 clickhouse://host:9440?secure=true&skip_verify=true
 ```
 
-## License
-
-This project is licensed under the Mozilla Public License 2.0 (MPL-2.0).
-
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request.
+Contributions are welcome. Please open an issue or submit a pull request.
 
 ## Acknowledgments
 
-This plugin is adapted from [ContentSquare/vault-plugin-database-clickhouse](https://github.com/ContentSquare/vault-plugin-database-clickhouse) for use with OpenBao.
+This project is a fork of
+[elaunira/openbao-plugin-database-clickhouse](https://github.com/elaunira/openbao-plugin-database-clickhouse)
+by Laurent Pellegrino, which is no longer maintained. That plugin was itself
+adapted from
+[ContentSquare/vault-plugin-database-clickhouse](https://github.com/ContentSquare/vault-plugin-database-clickhouse)
+for use with OpenBao instead of HashiCorp Vault. Thanks to both projects for the
+original work.
+
+## About Digitalis
+
+[Digitalis](https://digitalis.io) is a cloud-native technology services company specializing in data engineering, DevOps, and digital transformation. With deep expertise in Apache Kafka, Apache Cassandra, Kubernetes, RabbitMQ, and many more open-source technologies, Digitalis helps organizations design, deploy, and operate resilient data infrastructure at scale.
+
+This project is maintained by [Digitalis.io](https://digitalis.io). For support, visit [digitalis.io/contact](https://digitalis.io/contact).
+
+## License
+
+This project is licensed under the Mozilla Public License 2.0 (MPL-2.0). See the [LICENSE](LICENSE) file for details.
