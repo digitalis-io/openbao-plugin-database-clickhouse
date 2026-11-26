@@ -5,7 +5,7 @@
 package main
 
 import (
-	clickhouse "github.com/elaunira/openbao-plugin-database-clickhouse"
+	clickhouse "github.com/digitalis-io/openbao-plugin-database-clickhouse"
 	"github.com/openbao/openbao/sdk/v2/database/dbplugin/v5"
 )
 

@@ -1,4 +1,4 @@
-module github.com/elaunira/openbao-plugin-database-clickhouse
+module github.com/digitalis-io/openbao-plugin-database-clickhouse
 
 go 1.27.4
 
